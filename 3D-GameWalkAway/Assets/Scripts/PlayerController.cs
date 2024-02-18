@@ -27,11 +27,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (score >= 20 && score<30){
-            transform.Translate(0, 0, 0.01f);
+            transform.Translate(0, 0, 0.05f);
         }else if ( score>=30){
-            transform.Translate(0, 0, 0.01f);
+            transform.Translate(0, 0, 0.05f);
         }else{
-            transform.Translate(0, 0, 0.01f);
+            transform.Translate(0, 0, 0.05f);
         }
 
         if (boost == true)
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
         if (jump==true){
             anim.SetBool("isJump", jump);
-            transform.Translate(0, 0.05f, 0);
+            transform.Translate(0, 0.08f, 0);
         }else{
             anim.SetBool("isJump", jump);
         }
