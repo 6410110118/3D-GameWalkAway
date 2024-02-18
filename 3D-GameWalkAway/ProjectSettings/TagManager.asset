@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Coin
   - Boost
+  - Deathpoint
+  - Updeathpoint
+  - Fish
   layers:
   - Default
   - TransparentFX

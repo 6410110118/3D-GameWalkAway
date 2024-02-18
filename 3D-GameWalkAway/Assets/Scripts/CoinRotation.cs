@@ -18,7 +18,7 @@ public class CoinRotation : MonoBehaviour
             transform.Rotate(0, 0, 0);
             transform.Translate(0, 0.04f, 0);
         }else{
-            transform.Rotate(0, 0, 0.1f);
+            transform.Rotate(0, 0, 0);
         }
     }
     void OnTriggerEnter(Collider other){
