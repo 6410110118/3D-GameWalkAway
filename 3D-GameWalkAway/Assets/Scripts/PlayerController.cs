@@ -11,9 +11,16 @@ public class PlayerController : MonoBehaviour
     public int score = 0;
     public Text ScoreText;
 
+    public bool boost = false;
+    public Rigidbody rbody;
+    public CapsuleCollider myCollider;
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
+        rbody = GetComponent<Rigidbody>();
+        myCollider = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -26,6 +33,21 @@ public class PlayerController : MonoBehaviour
         }else{
             transform.Translate(0, 0, 0.01f);
         }
+
+        if (boost == true)
+        {
+            transform.Translate(0, 0, 1f);
+            myCollider.enabled = false;
+            rbody.isKinematic = true;
+
+        }
+        else
+        {
+            myCollider.enabled = true;
+            rbody.isKinematic = false;
+        }
+
+
         if (Input.GetKey(KeyCode.Space)){
             jump = true;
         }else{
@@ -49,6 +71,7 @@ public class PlayerController : MonoBehaviour
         }else{
             anim.SetBool("isSlide", slide);
         }
+        
     }
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Coin"){
@@ -56,5 +79,14 @@ public class PlayerController : MonoBehaviour
             score += 1;
             ScoreText.text = score.ToString();
         }
+
+    
+    }
+
+    IEnumerator BoostController()
+    {
+        boost = true;
+        yield return new WaitForSeconds(3);
+        boost = false;
     }
 }
